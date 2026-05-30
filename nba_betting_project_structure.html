@@ -1,0 +1,80 @@
+
+<style>
+  .tree { font-family: var(--font-mono); font-size: 13px; line-height: 1.8; color: var(--color-text-primary); padding: 1.2rem 1.5rem; }
+  .folder { color: var(--color-text-primary); font-weight: 500; }
+  .file { color: var(--color-text-secondary); }
+  .note { color: var(--color-text-tertiary); font-size: 11.5px; margin-left: 4px; }
+  .badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle; line-height: 1.6; }
+  .badge-mlflow { background: #E6F1FB; color: #0C447C; }
+  .badge-ignore { background: #FAEEDA; color: #633806; }
+  .badge-new { background: #EAF3DE; color: #27500A; }
+  @media (prefers-color-scheme: dark) {
+    .badge-mlflow { background: #0C447C; color: #B5D4F4; }
+    .badge-ignore { background: #633806; color: #FAC775; }
+    .badge-new { background: #27500A; color: #C0DD97; }
+  }
+  .section-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 1.1rem 0 0.2rem; display: block; }
+  .divider { border: none; border-top: 1px solid var(--color-border-tertiary); margin: 0.6rem 0; }
+</style>
+
+<div class="tree">
+  <span class="folder">nba-betting/</span>
+  <hr class="divider">
+
+  <span class="section-label">data layer</span>
+  <div>├── <span class="folder">data/</span></div>
+  <div>│   ├── <span class="folder">raw/</span> <span class="note">— original Kaggle CSV pulls, never modified</span></div>
+  <div>│   ├── <span class="folder">processed/</span> <span class="note">— feature-engineered tables, cached Elo snapshots</span></div>
+  <div>│   └── <span class="file">nba.db</span> <span class="badge badge-ignore">gitignore</span> <span class="note">— SQLite working database</span></div>
+
+  <span class="section-label">exploration</span>
+  <div>├── <span class="folder">notebooks/</span></div>
+  <div>│   ├── <span class="file">01_data_collection.ipynb</span></div>
+  <div>│   ├── <span class="file">02_eda.ipynb</span></div>
+  <div>│   ├── <span class="file">03_feature_engineering.ipynb</span></div>
+  <div>│   └── <span class="file">04_modeling.ipynb</span></div>
+
+  <span class="section-label">source modules</span>
+  <div>├── <span class="folder">src/</span></div>
+  <div>│   ├── <span class="file">__init__.py</span></div>
+  <div>│   │</div>
+  <div>│   ├── <span class="folder">data/</span></div>
+  <div>│   │   ├── <span class="file">__init__.py</span></div>
+  <div>│   │   ├── <span class="file">fetch.py</span> <span class="note">— Kaggle API calls, CSV ingestion into SQLite</span></div>
+  <div>│   │   ├── <span class="file">database.py</span> <span class="note">— DB connection, schema definitions, query helpers</span></div>
+  <div>│   │   └── <span class="file">preprocess.py</span> <span class="note">— cleaning, merging, writes to nba.db</span></div>
+  <div>│   │</div>
+  <div>│   ├── <span class="folder">features/</span></div>
+  <div>│   │   ├── <span class="file">__init__.py</span></div>
+  <div>│   │   ├── <span class="file">elo.py</span> <span class="note">— your Elo system (calc, updates, decay)</span></div>
+  <div>│   │   └── <span class="file">build_features.py</span> <span class="note">— rolling stats, advanced metrics, feature assembly</span></div>
+  <div>│   │</div>
+  <div>│   ├── <span class="folder">models/</span></div>
+  <div>│   │   ├── <span class="file">__init__.py</span></div>
+  <div>│   │   ├── <span class="file">train.py</span> <span class="note">— training loop + MLflow logging</span></div>
+  <div>│   │   ├── <span class="file">predict.py</span> <span class="note">— inference on upcoming games</span></div>
+  <div>│   │   └── <span class="file">evaluate.py</span> <span class="note">— metrics, calibration, ROI simulation</span></div>
+  <div>│   │</div>
+  <div>│   └── <span class="folder">utils/</span></div>
+  <div>│       ├── <span class="file">__init__.py</span></div>
+  <div>│       └── <span class="file">helpers.py</span> <span class="note">— shared utilities</span></div>
+
+  <span class="section-label">config</span>
+  <div>├── <span class="folder">configs/</span></div>
+  <div>│   └── <span class="file">config.yaml</span> <span class="note">— hyperparams, Elo K-factor, feature flags, bet thresholds</span></div>
+
+  <span class="section-label">mlflow (auto-generated)</span>
+  <div>├── <span class="file">mlruns/</span> <span class="badge badge-mlflow">mlflow</span> <span class="badge badge-ignore">gitignore</span></div>
+  <div>├── <span class="file">mlflow.db</span> <span class="badge badge-mlflow">mlflow</span> <span class="badge badge-ignore">gitignore</span> <span class="note">— optional SQLite UI backend</span></div>
+
+  <span class="section-label">tests</span>
+  <div>├── <span class="folder">tests/</span> <span class="badge badge-new">recommended</span></div>
+  <div>│   ├── <span class="file">test_elo.py</span> <span class="note">— unit tests for your Elo logic</span></div>
+  <div>│   ├── <span class="file">test_features.py</span></div>
+  <div>│   └── <span class="file">test_database.py</span></div>
+
+  <span class="section-label">root files</span>
+  <div>├── <span class="file">.gitignore</span></div>
+  <div>├── <span class="file">requirements.txt</span></div>
+  <div>└── <span class="file">README.md</span></div>
+</div>
