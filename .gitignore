@@ -11,3 +11,9 @@ env/
 
 # OS-specific
 .DS_Store
+
+
+notebooks/mlruns/
+mlruns/
+mlflow_runs/
+*.pkl
