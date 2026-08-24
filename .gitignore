@@ -1,2 +1,13 @@
+# Database & Cache
+data/*.db
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment
+venv/
+env/
+.env
+
+# OS-specific
 .DS_Store
-data/

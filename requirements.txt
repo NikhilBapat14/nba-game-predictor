@@ -1,0 +1,12 @@
+pandas==2.3.3
+numpy==2.3.5
+scikit-learn==1.7.2
+joblib==1.5.2
+xgboost==3.0.5
+
+# Data ingestion
+kagglehub>=0.3.0
+
+# Experiment tracking and notebook model comparisons
+mlflow>=2.0.0
+lightgbm>=4.0.0
