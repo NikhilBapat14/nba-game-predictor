@@ -63,7 +63,7 @@ betting_classification_model/
 ### 1. Clone and enter the project
 
 ```bash
-git clone <https://github.com/NikhilBapat14/nba-game-predictor.git>
+git clone https://github.com/NikhilBapat14/nba-game-predictor.git
 cd betting_classification_model
 ```
 
