@@ -100,7 +100,7 @@ def fetch_kaggle_data():
 def fetch_and_save_schedule(db_path="./data/nba_pipeline.db"):
     """Downloads the upcoming league schedule from Kaggle and saves it to SQLite."""
     dataset_handle = "eoinamoore/historical-nba-data-and-player-box-scores"
-    file_path = "LeagueSchedule25_26.csv"
+    file_path = "LeagueSchedule26_27.csv"
 
     print("Downloading league schedule from Kaggle...")
     df_schedule = kagglehub.dataset_load(
